@@ -1,5 +1,6 @@
 package HRMLoginTest;
 
+import Pages.Dashboard;
 import Pages.GoogleSearchObjects;
 import Pages.HRMLOGIN;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -27,7 +28,7 @@ public class HRMLoginTest {
     }
 
 
-    @Test
+    @Test(priority = 1)
     public void login() {
         HRMLOGIN hrmlogin = new HRMLOGIN(driver);
         hrmlogin.enterUsername();
@@ -35,6 +36,20 @@ public class HRMLoginTest {
         hrmlogin.clickLoginbtn();
     }
 
+    @Test(priority = 2)
+    public void newUser() throws InterruptedException {
+        Dashboard obj = new Dashboard(driver);
+        obj.clickAdmin();
+        obj.adduser();
+        obj.selectDDoption();
+        obj.ename();
+        obj.username();
+        obj.password();
+        obj.ConfirmPassword();
+        obj.setSaveBtn();
+
+
+    }
 
     @AfterClass
     public void terdown(){
