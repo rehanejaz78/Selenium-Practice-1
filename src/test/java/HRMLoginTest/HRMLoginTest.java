@@ -34,10 +34,11 @@ public class HRMLoginTest {
         hrmlogin.enterUsername();
         hrmlogin.enterPassword();
         hrmlogin.clickLoginbtn();
+        hrmlogin.verifyUserLoggedIn();
     }
 
     @Test(priority = 2)
-    public void newUser() throws InterruptedException {
+    public void newUserTest() throws InterruptedException {
         Dashboard obj = new Dashboard(driver);
         obj.clickAdmin();
         obj.adduser();

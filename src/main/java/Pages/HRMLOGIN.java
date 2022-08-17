@@ -36,6 +36,11 @@ public class HRMLOGIN {
         WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(10));
         w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("welcome")));
 
+
+    }
+
+
+    public void verifyUserLoggedIn(){
         Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/index.php/dashboard");
     }
 
