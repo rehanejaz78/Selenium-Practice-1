@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -11,10 +12,10 @@ import java.time.Duration;
 
 public class HRMLOGIN {
 
-    By username = By.id("txtUsername");
-    By password = By.id("txtPassword");
+    By username = By.xpath("//input[@placeholder='Username']");
+    By password = By.xpath("//input[@placeholder='Password']");
 
-    By loginButton = By.id("btnLogin");
+    By loginButton = By.cssSelector("button[type='submit']");
 
     WebDriver driver;
 
@@ -23,8 +24,16 @@ public class HRMLOGIN {
         this.driver= driver;
     }
 
-    public void enterUsername(){
+    public void enterUsername() throws InterruptedException {
+
+      Thread.sleep(2000);
+
         driver.findElement(username).sendKeys("Admin");
+    }
+
+    public void waitForWebElementToAppear(WebElement findBy) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(32));
+        wait.until(ExpectedConditions.visibilityOf(findBy));
     }
 
     public void enterPassword(){
@@ -33,15 +42,13 @@ public class HRMLOGIN {
 
     public void clickLoginbtn(){
         driver.findElement(loginButton).click();
-        WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(10));
-        w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("welcome")));
 
 
     }
 
 
     public void verifyUserLoggedIn(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/index.php/dashboard");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
     }
 
 

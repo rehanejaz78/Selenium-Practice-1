@@ -1,6 +1,7 @@
 package PRACTICE;
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -42,7 +43,8 @@ public class Keyboard {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver","/Users/rehanejaz/Trainings/Selenium/SeleniumPractice/src/main/resources/chromedriver");
+       // System.setProperty("webdriver.chrome.driver","/Users/rehanejaz/Learning/Day 6 prefix string example/Selenium-Practice-1/src/main/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://formy-project.herokuapp.com/switch-window");

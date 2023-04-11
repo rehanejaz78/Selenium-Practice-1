@@ -22,14 +22,14 @@ public class HRMLoginTest {
 //        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
         driver = new ChromeDriver();
 
-        driver.get("https://opensource-demo.orangehrmlive.com/");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
 
     }
 
 
     @Test(priority = 1)
-    public void login() {
+    public void login() throws InterruptedException {
         HRMLOGIN hrmlogin = new HRMLOGIN(driver);
         hrmlogin.enterUsername();
         hrmlogin.enterPassword();
